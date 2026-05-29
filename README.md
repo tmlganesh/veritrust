@@ -1,331 +1,148 @@
-# VeriTrust — Employee Verification Platform
+# VeriTrust
 
-A full-stack enterprise web application for managing employee background verifications, built with **Angular 17** and **Node.js**. Designed for HR teams, verification officers, and operations managers to streamline background checks, track verification records, and maintain compliance.
+VeriTrust is an enterprise-grade HR and administration platform designed for modern organizations to securely manage user access and operational records. Built to handle complex organizational data, it provides robust role-based access control, ensuring that administrators and general users have appropriate system privileges.
 
----
+## Live Demo
 
-## Table of Contents
+**Frontend:**
+[https://veri-trust-rosy.vercel.app/](https://veri-trust-rosy.vercel.app/)
 
-- [Features](#features)
-- [Tech Stack](#tech-stack)
-- [Project Structure](#project-structure)
-- [Prerequisites](#prerequisites)
-- [Installation](#installation)
-- [Environment Variables](#environment-variables)
-- [Database Seeding](#database-seeding)
-- [Running the Application](#running-the-application)
-- [API Endpoints](#api-endpoints)
-- [Default Credentials](#default-credentials)
-- [Screenshots](#screenshots)
+**Backend:**
+[https://veritrust-hhcj.onrender.com](https://veritrust-hhcj.onrender.com)
 
----
+## Repository
+
+[https://github.com/tmlganesh/veritrust](https://github.com/tmlganesh/veritrust)
+
+## Project Overview
+
+VeriTrust satisfies comprehensive enterprise requirements by delivering a fully integrated, API-driven architecture. The application enforces strict Role-Based Authentication, clearly separating Admin capabilities (like system-wide user management) from General User access. It offers seamless User Management and Records Management interfaces, allowing administrators to efficiently oversee organizational data. The frontend features a highly responsive UI that adapts to various devices, while the backend simulates real-world conditions through asynchronous processing to demonstrate proper loading states and reactive data handling.
 
 ## Features
 
-### Authentication & Authorization
-- JWT-based authentication with role-based access control
-- Secure password hashing with bcrypt
-- Protected routes with admin-only actions
-
-### Dashboard
-- Overview statistics — total records, pending, approved, active users
-- Recent verification records table
-- Real-time activity feed
-- Quick action shortcuts
-
-### Records Management
-- Full data table with search, sort, and filter capabilities
-- Filter by status (Verified, Pending, Escalated, Rejected)
-- Filter by verification type (Employment, Education, Background Check, Identity, Address)
-- Sortable columns and pagination
-- Risk score visualization with progress indicators
-
-### User Management (Admin)
-- Add, edit, and delete users via slide-in drawer panel
-- Role assignment (Administrator, Verification Officer, Viewer)
-- Department management
-- Active/inactive status toggle
-- Delete confirmation modal
-
-### Activity Logs
-- Complete audit trail of all system events
-- Summary statistics (total events, active users, flagged events)
-- Filterable event log table with timestamps
-- Action type badges (LOGIN, CREATE, APPROVE, UPDATE, DELETE, EXPORT)
-
-### UI/UX
-- Clean, professional enterprise SaaS design
-- Collapsible sidebar navigation
-- Responsive layout for all screen sizes
-- Top navigation with search, notifications, user profile, and logout
-- Loading skeletons for async data
-
----
-
-## Tech Stack
-
-### Frontend
-| Technology | Version | Purpose |
-|---|---|---|
-| Angular | 17.3 | Frontend framework |
-| TypeScript | 5.4 | Type-safe JavaScript |
-| Tailwind CSS | 3.4 | Utility-first CSS framework |
-| RxJS | 7.8 | Reactive programming |
-
-### Backend
-| Technology | Version | Purpose |
-|---|---|---|
-| Node.js | 18+ | Runtime environment |
-| Express | 4.19 | Web framework |
-| TypeScript | 5.4 | Type-safe JavaScript |
-| Mongoose | 8.4 | MongoDB ODM |
-| JSON Web Token | 9.0 | Authentication |
-| bcryptjs | 2.4 | Password hashing |
-
-### Database
-| Technology | Purpose |
-|---|---|
-| MongoDB Atlas | Cloud-hosted NoSQL database |
-
----
-
-## Project Structure
-
-```
-Project/
-├── backend/
-│   ├── src/
-│   │   ├── config/
-│   │   │   └── db.ts                  # MongoDB connection
-│   │   ├── controllers/
-│   │   │   ├── authController.ts      # Login & profile
-│   │   │   └── verificationController.ts  # CRUD & analytics
-│   │   ├── middlewares/
-│   │   │   ├── authMiddleware.ts      # JWT verification & role guard
-│   │   │   └── delayMiddleware.ts     # Simulated API delay
-│   │   ├── models/
-│   │   │   ├── User.ts               # User schema with password hashing
-│   │   │   ├── VerificationCase.ts    # Verification record schema
-│   │   │   └── ActivityLog.ts         # Audit log schema
-│   │   ├── routes/
-│   │   │   ├── authRoutes.ts          # Auth endpoints
-│   │   │   └── verificationRoutes.ts  # Case endpoints
-│   │   ├── seed.ts                    # Database seeder
-│   │   ├── server.ts                  # Express app entry point
-│   │   └── types.d.ts                 # Custom type declarations
-│   ├── .env                           # Environment variables
-│   ├── package.json
-│   └── tsconfig.json
-│
-├── frontend/
-│   ├── src/
-│   │   ├── app/
-│   │   │   ├── core/services/
-│   │   │   │   └── auth.service.ts    # Authentication service
-│   │   │   ├── features/
-│   │   │   │   ├── auth/
-│   │   │   │   │   └── login.component.ts
-│   │   │   │   ├── dashboard/
-│   │   │   │   │   └── dashboard.component.ts
-│   │   │   │   ├── cases/
-│   │   │   │   │   └── cases.component.ts
-│   │   │   │   ├── users/
-│   │   │   │   │   └── users.component.ts
-│   │   │   │   └── analytics/
-│   │   │   │       └── analytics.component.ts
-│   │   │   ├── shared/components/
-│   │   │   │   └── layout.component.ts
-│   │   │   ├── app.component.ts
-│   │   │   ├── app.config.ts
-│   │   │   └── app.routes.ts
-│   │   ├── styles.css                 # Global styles & design system
-│   │   └── index.html
-│   ├── angular.json
-│   ├── tailwind.config.js
-│   └── package.json
-│
-└── README.md
-```
-
----
-
-## Prerequisites
-
-Ensure the following are installed on your system:
-
-- **Node.js** (v18 or higher) — [Download](https://nodejs.org/)
-- **npm** (comes with Node.js)
-- **MongoDB Atlas** account (free tier) — [Sign up](https://cloud.mongodb.com/)
-
-> **Note:** A local MongoDB installation also works, but MongoDB Atlas is recommended for ease of setup.
-
----
-
-## Installation
-
-### 1. Clone the Repository
-
-```bash
-git clone <repository-url>
-cd Project
-```
-
-### 2. Install Backend Dependencies
-
-```bash
-cd backend
-npm install
-```
-
-### 3. Install Frontend Dependencies
-
-```bash
-cd ../frontend
-npm install
-```
-
----
-
-## Environment Variables
-
-Create a `.env` file inside the `backend/` directory with the following variables:
-
-```env
-PORT=5000
-MONGO_URI=mongodb+srv://<username>:<password>@<cluster-url>/verification_portal?retryWrites=true&w=majority
-JWT_SECRET=your_jwt_secret_key
-API_DELAY=800
-```
-
-| Variable | Description |
-|---|---|
-| `PORT` | Port number for the backend server |
-| `MONGO_URI` | MongoDB connection string (Atlas or local) |
-| `JWT_SECRET` | Secret key for JWT token signing |
-| `API_DELAY` | Simulated API response delay in milliseconds |
-
----
-
-## Database Seeding
-
-Populate the database with sample data (2 users + 15 verification cases):
-
-```bash
-cd backend
-npm run seed
-```
-
-This creates:
-- **Admin User** — `admin@mploychek.ai` / `admin123`
-- **General User** — `user@mploychek.ai` / `user123`
-- **15 verification cases** with randomized statuses and risk scores
-
----
-
-## Running the Application
-
-### Start the Backend
-
-```bash
-cd backend
-npm run dev
-```
-
-The backend runs at **http://localhost:5000**.
-
-### Start the Frontend
-
-Open a **new terminal**:
-
-```bash
-cd frontend
-npm start
-```
-
-The frontend runs at **http://localhost:4200**.
-
-> Both servers must be running simultaneously for full functionality.
-
----
-
-## API Endpoints
-
-### Authentication
-
-| Method | Endpoint | Description | Access |
-|---|---|---|---|
-| `POST` | `/api/auth/login` | User login | Public |
-| `GET` | `/api/auth/profile` | Get user profile | Authenticated |
-
-### Verification Cases
-
-| Method | Endpoint | Description | Access |
-|---|---|---|---|
-| `GET` | `/api/verification-cases` | List all cases | Authenticated |
-| `GET` | `/api/verification-cases/:id` | Get case by ID | Authenticated |
-| `PUT` | `/api/verification-cases/:id` | Update case status | Admin only |
-| `GET` | `/api/verification-cases/analytics` | Get analytics summary | Authenticated |
-
-### Request Headers
-
-```
-Authorization: Bearer <jwt_token>
-Content-Type: application/json
-```
-
----
-
-## Default Credentials
-
-| Role | Email | Password |
-|---|---|---|
-| Admin | `admin@mploychek.ai` | `admin123` |
-| User | `user@mploychek.ai` | `user123` |
-
-> Run `npm run seed` first to create these accounts in the database.
-
----
+| Feature | Description |
+| :--- | :--- |
+| **Authentication** | Secure login system using JWT for robust session management. |
+| **Role-Based Access Control** | Distinct permission levels restricting features for Admin and General User roles. |
+| **User Management** | Comprehensive CRUD capabilities for administrators to manage employee accounts. |
+| **Records Dashboard** | Centralized interface for viewing and managing organizational records. |
+| **Search and Filtering** | Advanced querying tools to quickly locate specific users and records. |
+| **Async API Delay Simulation** | Intentional network delays to demonstrate loading states and UI responsiveness. |
+| **Activity Logs** | Detailed tracking of system actions for auditing and operational monitoring. |
+| **Responsive Design** | Fluid layout that functions flawlessly across desktop, tablet, and mobile devices. |
+| **Logout Functionality** | Secure session termination with proper token invalidation. |
 
 ## Screenshots
 
 ### Login Page
-Clean split layout with branding panel and sign-in form with role selector.
+![Login Page](https://via.placeholder.com/800x450.png?text=Login+Page)
 
 ### Dashboard
-Statistics overview with recent records table, activity feed, and quick actions.
+![Dashboard](https://via.placeholder.com/800x450.png?text=Dashboard)
 
-### Records Page
-Enterprise data table with search, sort, filter, and pagination.
+### Records Management
+![Records Management](https://via.placeholder.com/800x450.png?text=Records+Management)
 
-### User Management
-Admin console with add/edit drawer and delete confirmation modal.
+### User Administration
+![User Administration](https://via.placeholder.com/800x450.png?text=User+Administration)
 
 ### Activity Logs
-Audit trail with summary cards and filterable event log table.
+![Activity Logs](https://via.placeholder.com/800x450.png?text=Activity+Logs)
 
----
+## Technology Stack
 
-## Scripts Reference
+| Category | Technology |
+| :--- | :--- |
+| **Frontend** | Angular, TypeScript, Tailwind CSS |
+| **Backend** | Node.js, Express.js |
+| **Database** | MongoDB Atlas, Mongoose |
+| **Authentication** | JSON Web Tokens (JWT), bcrypt |
+| **Deployment** | Vercel (Frontend), Render (Backend) |
 
-### Backend
+## Architecture
 
-| Script | Command | Description |
-|---|---|---|
-| Development | `npm run dev` | Start with nodemon (auto-reload) |
-| Production | `npm start` | Start compiled JS |
-| Build | `npm run build` | Compile TypeScript to JavaScript |
-| Seed | `npm run seed` | Populate database with sample data |
+```text
+Frontend (Angular)
+       ↓
+  Node.js API
+       ↓
+ MongoDB Atlas
+```
 
-### Frontend
+The data flow begins at the Angular frontend, which captures user interactions and dispatches HTTP requests via integrated services. These requests are routed through the Express-driven Node.js REST API. The backend validates permissions, executes the corresponding asynchronous operations against the MongoDB Atlas cluster, and returns the formatted response back to the responsive client interface.
 
-| Script | Command | Description |
-|---|---|---|
-| Development | `npm start` | Start Angular dev server |
-| Build | `npm run build` | Production build |
-| Test | `npm test` | Run unit tests |
+## Folder Structure
 
----
+```text
+veritrust/
+├── frontend/
+│   ├── src/
+│   │   ├── app/
+│   │   │   ├── core/          
+│   │   │   ├── features/      
+│   │   │   └── shared/        
+│   │   └── environments/      
+│   └── vercel.json
+└── backend/
+    ├── src/
+    │   ├── controllers/       
+    │   ├── models/            
+    │   ├── routes/            
+    │   └── middlewares/       
+    └── server.js
+```
 
-## License
+## API Highlights
 
-ISC
+* `POST /auth/login`
+* `GET /records`
+* `GET /users`
+* `POST /users`
+* `PUT /users/:id`
+* `DELETE /users/:id`
+
+## Async Processing Demonstration
+
+To accurately simulate a real-world enterprise environment, VeriTrust intentionally introduces configurable API delays across its endpoints. This architectural decision explicitly demonstrates the application's capability to handle asynchronous data handling gracefully. By simulating latency, the UI effectively showcases loading states, skeleton loaders, and reactive UI updates, ensuring a polished user experience even under non-ideal network conditions. This implementation directly satisfies the assignment requirement for asynchronous data handling.
+
+## Default Credentials
+
+| Role | Email | Password |
+| :--- | :--- | :--- |
+| **Admin** | `admin@admin.com` | `admin123` |
+| **User** | `user@user.com` | `user123` |
+
+## Getting Started
+
+```bash
+npm install
+npm run dev
+```
+
+## Assignment Requirement Mapping
+
+| Requirement | Implementation |
+| :--- | :--- |
+| **Role-based Authentication** | JWT-based auth with middleware validating Admin/User permissions. |
+| **Admin and General User Access** | Conditional UI rendering and protected routing based on user roles. |
+| **User Management** | Complete CRUD interfaces for administrators to oversee system users. |
+| **Records Management** | Dedicated dashboard allowing authorized roles to view/manage data. |
+| **API-driven Architecture** | Decoupled Node.js REST API communicating seamlessly with the frontend. |
+| **Async Processing Simulation** | Configurable artificial delays on API routes with UI loading states. |
+| **Responsive UI** | Mobile-first design utilizing flexible layouts and modern CSS. |
+
+## Future Improvements
+
+* Email notifications
+* Audit exports
+* Advanced analytics
+* Multi-factor authentication
+* Role customization
+
+## Author
+
+**Name:**  
+Ganesh T M L
+
+**GitHub:**  
+[https://github.com/tmlganesh](https://github.com/tmlganesh)

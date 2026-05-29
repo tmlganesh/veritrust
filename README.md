@@ -35,19 +35,19 @@ VeriTrust satisfies comprehensive enterprise requirements by delivering a fully 
 ## Screenshots
 
 ### Login Page
-![Login Page](https://via.placeholder.com/800x450.png?text=Login+Page)
+![Login Page](./assets/screenshots/login-page.svg)
 
 ### Dashboard
-![Dashboard](https://via.placeholder.com/800x450.png?text=Dashboard)
+![Dashboard](./assets/screenshots/dashboard.svg)
 
 ### Records Management
-![Records Management](https://via.placeholder.com/800x450.png?text=Records+Management)
+![Records Management](./assets/screenshots/records-management.svg)
 
 ### User Administration
-![User Administration](https://via.placeholder.com/800x450.png?text=User+Administration)
+![User Administration](./assets/screenshots/user-administration.svg)
 
 ### Activity Logs
-![Activity Logs](https://via.placeholder.com/800x450.png?text=Activity+Logs)
+![Activity Logs](./assets/screenshots/activity-logs.svg)
 
 ## Technology Stack
 

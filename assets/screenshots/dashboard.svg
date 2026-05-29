@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="800" height="450" viewBox="0 0 800 450" role="img" aria-labelledby="title desc">
+  <title id="title">Dashboard Screenshot Placeholder</title>
+  <desc id="desc">Decorative placeholder image for VeriTrust dashboard.</desc>
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#1f2937" />
+      <stop offset="100%" stop-color="#0b1324" />
+    </linearGradient>
+  </defs>
+  <rect width="800" height="450" fill="url(#bg)" />
+  <rect x="24" y="24" width="180" height="402" rx="12" fill="#111827" opacity="0.8" />
+  <rect x="224" y="24" width="552" height="70" rx="12" fill="#334155" />
+  <rect x="224" y="110" width="170" height="110" rx="12" fill="#0ea5e9" opacity="0.9" />
+  <rect x="410" y="110" width="170" height="110" rx="12" fill="#22c55e" opacity="0.9" />
+  <rect x="596" y="110" width="180" height="110" rx="12" fill="#f59e0b" opacity="0.9" />
+  <rect x="224" y="238" width="552" height="188" rx="12" fill="#1e293b" />
+  <text x="500" y="402" font-family="Segoe UI, Arial, sans-serif" font-size="30" text-anchor="middle" fill="#e5e7eb">Dashboard</text>
+</svg>

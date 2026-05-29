@@ -35,7 +35,7 @@ VeriTrust satisfies comprehensive enterprise requirements by delivering a fully 
 ## Screenshots
 
 ### Landing Page
-<img src="./assets/screenshots/landing-page.png" alt="VeriTrust Landing Page" width="100%" />
+<img src="./frontend/assets/screenshots/landing-page.png" alt="VeriTrust Landing Page" width="100%" />
 
 ## Technology Stack
 

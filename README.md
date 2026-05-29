@@ -41,7 +41,7 @@ VeriTrust satisfies comprehensive enterprise requirements by delivering a fully 
 
 | Category | Technology |
 | :--- | :--- |
-| **Frontend** | Angular, TypeScript, Tailwind CSS |
+| **Frontend** | Angular 17, TypeScript, Tailwind CSS |
 | **Backend** | Node.js, Express.js |
 | **Database** | MongoDB Atlas, Mongoose |
 | **Authentication** | JSON Web Tokens (JWT), bcrypt |
